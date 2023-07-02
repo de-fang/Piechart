@@ -35,6 +35,26 @@ namespace Piechart.ViewModels
                 Color = "Green",
                 Value = 2344
             });
+            Update();
+        }
+
+
+
+        private async Task Update()
+        {
+           await Task.Run(async () =>
+            {
+                while (true)
+                {
+                    foreach (var item in Datas)
+                    {
+                        item.Value = Random.Shared.NextDouble() * 1000;
+                    }
+                   await Task.Delay(500);
+                }
+               
+            });
+           
         }
     }
 }
